@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_cors import CORS
 from restapi.account_app import account_bp
 from restapi.project_app import project_bp
 from restapi.story_app import story_bp
@@ -37,6 +38,7 @@ app.register_blueprint(project_group2_bp)
 app.register_blueprint(authority2_bp)
 app.register_blueprint(page2_bp)
 app.config['JSON_AS_ASCII'] = False
+CORS(app)
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
